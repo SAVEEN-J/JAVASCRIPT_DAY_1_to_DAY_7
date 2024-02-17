@@ -1,19 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DAY-4</title>
-</head>
-<body>
-    <h1 style="text-align: center;border: 1px solid rebeccapurple; background-color: aquamarine;"> Day-4 /Activities</h1>
 
-
-    <h1>1 .Immediately Invoked Function Expressions</h1>
-    <h1>2 . Arrow functions</h1>
-
-    <script>
 ///////////////////////////////////////////////a.Print odd numbers in an array 
 var addNumbers = [1,2,3,4,5,6,7,8,9,10,11,12,13];
 var oddNumber = [];
@@ -219,8 +204,3 @@ palindromes_Array.map((e)=>{
 
 
 
-
-    </script>
-    
-</body>
-</html>
