@@ -4,70 +4,223 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DAY_3</title>
+    <title>DAY-4</title>
 </head>
 <body>
-    <h1>Day_3</h1>
-
-   <h3></h3>
+    <h1 style="text-align: center;border: 1px solid rebeccapurple; background-color: aquamarine;"> Day-4 /Activities</h1>
 
 
-   
+    <h1>1 .Immediately Invoked Function Expressions</h1>
+    <h1>2 . Arrow functions</h1>
+
     <script>
-                                                // day3  1.compare two json have same properties
- let obj1={name:"person",age:5} 
+///////////////////////////////////////////////a.Print odd numbers in an array 
+var addNumbers = [1,2,3,4,5,6,7,8,9,10,11,12,13];
+var oddNumber = [];
+
+(function(addNumbers) {
+
+
+for (let i in addNumbers) {
+      
+    if (addNumbers[i]%2 == 0) {
+        oddNumber.push(i)
+    
+}        
+    }
+  
+
+return addNumbers;
+
+})(addNumbers);
+  // console.log("oddNumber",oddNumber);
+
+/////////////////////////////////////////////// b Convert all the strings to title caps in a string array
+var string_array = ["i like to play volley ball"];
+(function(string_array) {
+// console.log(string_array.map(str=>str.toUpperCase()));
+return string_array;
+
+})(string_array);
+
+///////////////////////////////////////////////c Sum of all numbers in an array
+
+(function(){
+    let add=0;
+    var sum=[100+200+450]
+    
+    for (let index = 0; index < sum.length; index++){
+       
+     add= add+sum[index];
  
+    }
+   // console.log(add);
+
+return sum;
+})();
+
+/////////////////////////////////////////////// d -Return all the prime numbers in an array
+
+  let prime_num= [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17];
+
+
+  ((array) => {
+ 
+    let find_pm =(array.filter(number=>{
+      if (number <=1) {
+        return false;
+        
+      }else{
+      for (let i = 2; i <= Math.sqrt(number); i++) {
+     
+     if (number % i === 0) {
+     
+       return false
+     }
+   }}return true
+
+    }));
    
-   let obj2={age:5,name:"person"} 
+   // console.log("prime numbers",find_pm);
+  
+})(prime_num);
+
+///////////////////////////////////////////////e Return all the palindromes in an array
+let palindromes_array=["ssdaa","asdfgfdsa","dsd","gsdsg","sgdgdsg","211","2113","323"];
+var newarray=[];
+((e)=>{  
+  
+
+for ( i=0; i<e.length;i++) {
+  
+    let par=e[i].split("").reverse().join("");
+    
+    if (e[i] == par) {
+        newarray.push(par)
+    }
    
-let keys= Object.keys(obj1)
-let both_josn=true;
-for (let e of keys) {
-  if (obj1[e] !== obj2[e]) {
-     both_josn=false
-     break;
-   } 
+}
+})(palindromes_array);
+//console.log("palindromes",newarray);
+///////////////////////////////////////////////f Return  median of two array of the same
+
+let a = [0,2,3,5,9];
+let b = [1,4];
+var median = ((a1, a2) => {
+  let x = a1.concat(a2);
+  x.sort(function (a,b) {
+    return a - b;
+  });
+  let len = x.length;
+  
+  return len%2 === 0 ? (x[Math.floor(len/2)-1] + x[Math.ceil(len/2)])/2 : x[Math.floor(len/2)];
+
+})(a,b);
+//console.log("median",median);
+///////////////////////////////////////////////g Remove duplicates from an array
+
+
+let RemoveDuplicates = ["apple", "mango", "apple","orange", "mango", "mango"];
+          
+ 
+((e)=> {
+  // console.log(e);
+  var RemoveValue =e.filter((val,ind)=>{
+
+  
+if (ind===e.indexOf(val)) {
+ 
+  return true
+}  
+
+
+  })
+ // console.log(RemoveValue);      
+ 
+        
+})(RemoveDuplicates);
+///////////////////////////////h Rotate an array by k times
+function rotateArray(arr, k) {
+       k = k % arr.length;
+        return arr.slice(k).concat(arr.slice(0, k));
+}
+const array = [1, 2, 3, 4, 5];
+const rotations = 3;
+const rotatedArray = rotateArray(array, rotations);
+console.log(rotatedArray); // Output: [4, 5, 1, 2, 3]
+ 
+////////////////////////////////////////////////////////////////////////////////2.ARROW FUNCTION////////////////////////////////////////////////////
+/////////////////////////////////////////////////// a.Print odd numbers in an array (ARROW)
+
+var ODDNumbers = [1,2,3,4,5,6,7,8,9,10,11,12,13];
+var oddnumber = [];
+let mapadd=ODDNumbers.map((v,i,a)=>{
+ 
+if (v%2 ===0) {
+ 
+  oddnumber.push(i)
+}
+
+
+})
+
+// console.log(oddnumber);
+
+
+//////////////////////////////////////////// b Convert all the strings to title caps in a string array
+var string_array = ["i like to play volley ball"];
+
+   let string=string_array.map(str=>str.toUpperCase());
+ //  console.log(string);
+///////////////////////////////////////////////c Sum of all numbers in an array
+var sum=[100,200,450]
+
+let ALLarray  =sum.reduce((p,c)=>{
+
+ return p+c
+
+})
+// console.log("sum",ALLarray);
+
+/////////////////////////////////////////////// d -Return all the prime numbers in an array in arrow function
+
+let numArray = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,]
+numArray = numArray.filter((e) => {
+if (e <=1) {
+  return false
+} else {
+  for (var i = 2; i <= Math.sqrt(e); i++) {
+    if (e % i === 0 ) {
+      return false
+    }
+  }
   
 }
-both_josn?console.log("Equal"):console.log("NOt equal");
+return true
+ 
+});
+
+//  console.log(numArray);
+///////////////////////////////////////////////e Return all the palindromes in an array arrow function
+
+let palindromes_Array=["ssdaa","asdfgfdsa","dsd","gsdsg","sgdgdsg","211","2113","323","savas"]
+let rev_Array=[];
+
+palindromes_Array.map((e)=>{
+  let reverse=e.split("").reverse().join("");
+  if (reverse == e ) {
+    rev_Array.push(reverse);
+ }
+ 
+})
+//console.log(rev_Array);
 
 
 
-                                                // day3  2. rest countries API   and 3
 
-
-        // display country and flags
-function reqListener() {
-
-  let data=JSON.parse(this.responseText);
-//    console.log(data);
-  for (let i = 0; i < data.length; i++) {
-     // 2 rd ans display all flags
- //console.log(data[i].flags);  
-
-
- // 3 rd ans print the all countries name.region,sub-region,and population
-
-  //console.log(data[i].name,data[i].region,data[i].subregion,data[i].population); 
-}
-
-}
-       const req= new XMLHttpRequest();
-        req.addEventListener("load",reqListener)
-        req.open("GET","https://restcountries.com/v3.1/all")
-        req.send();
-
-       
 
 
     </script>
-
-
-
-  
     
 </body>
 </html>
-
-<script>
-     
