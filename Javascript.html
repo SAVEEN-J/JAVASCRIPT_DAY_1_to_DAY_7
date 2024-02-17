@@ -4,160 +4,75 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DAY_6</title>
+    <title>Day 07:ARRAY METHODS</title>
 </head>
+<h1>Day 07:ARRAY METHODS</h1>
 <body>
-    <h1>Day 06 :OOPS TASK </h1>
-
-    <h2>https://github.com/rvsp/typescript-oops/blob/master/Practice/Movie.md<br>
-        https://github.com/rvsp/typescript-oops/blob/master/Practice/class-circle.md<br>
-        Write a “person” class to hold all the details.<br>
-        write a class to calculate the uber price.<br>
-        </h2><br>
-
-
-
-
-        <script>
-                                               // 1 Class - Movie
-            class Movie{
-                constructor(title,studio,rating){
-                                this.Title = title;
-                                this.Studio = studio;
-                                this.Rating = rating;
-                
-                            }
-
-                           
-
-                       
-                getPg() {
-                
-                   if (this.Rating =="PG") {
-                     return this.Title;
-                    // return this.Title;
-                   } 
-                  }
-                                            
-            };
-
     
-var Movie1= new Movie("thala","best production","PG13")
-console.log("Movie1",Movie1);
-var Movie2= new Movie("actor","west Base","PG17")
-console.log("Movie2",Movie2);
-console.log("Movie2 Getpg",Movie2.getPg()); //undefind 
-var Movie3= new Movie("Casino Royale","Eon Productions","PG")
-console.log("Movie3",Movie3);
+<script>
+function myfunc() {
 
-console.log("Movie3 Getpg",Movie3.getPg());   //  Casino Royale
+    // var data=json.parse(this.responseText);
+     var data=JSON.parse(this.responseText);
+    
+ // a.Get all the countries from the Asia continent /region using the Filter function
+     function function_filter(e){
 
-     
- 
+   if (e.continents) {
+       return e.continents == "Asia" || e.region == "Asia"
+   
+   } 
+     }
+     let region= data.filter(function_filter)
+   // console.log(region);
 
+    //b  Get all the countries with a population of less than 2 lakhs using Filter function
+    let pop= data.filter(e=>e.population<200000);
+  //  console.log(pop);
 
-        
-        //2. class circle
+// c.Print the following details name, capital, flag using forEach function
 
- var Circle =(function () {
-    function Circle(radius, color) {
-        this.radius = 1.0;
-        this.color = "Red";
-        if (typeof (radius) !== "undefined") {
-            this.radius = radius;
-        }
-        if (typeof (color) !== "undefined") {
-            this.color = color;
-        }
-    }
-    Circle.prototype.getRadius = function () {
-        return this.radius;
-    };
-    Circle.prototype.setRadius = function (radius) {
-        this.radius = radius;
-    };
-    Circle.prototype.getColor = function () {
-        return this.color;
-    };
-    Circle.prototype.setColor = function (color) {
-        this.color = color;
-    };
-    Circle.prototype.toString = function () {
-        return "Circle[radius= " + this.radius + ", Color: " + this.color+"]";
-    };
-    Circle.prototype.getArea = function () {
-        return (2 * (Math.PI) * this.radius);
-    };
-    Circle.prototype.getCircumference = function () {
-        return (2 * this.radius);
-    };
-    return Circle;
-}());
-var Circle1 = new Circle();
-//console.log(Circle1.toString());
-
-var Circle2 = new Circle(7.5);
-//console.log(Circle2.toString());
-
-var Circle3 = new Circle(1.7, 'skyBlue');
-//console.log(Circle3.getRadius());
-
-Circle3.setRadius(3.3);
-// console.log(Circle3.getRadius());
-// console.log(Circle3.getColor());
-
-Circle3.setColor("red");
-// console.log(Circle3.getColor());
-// console.log(Circle3.toString());
-// console.log(Circle3.getArea());
-// console.log(Circle3.getCircumference());
-          
+data.forEach(element => {
+ //console.log(element.name,element.capital,element.flag);
+    
+});
 
 
 
+//d Print the total population of countries using reduce function
+
+function popuLation(previousValue, currentValue, index) {
+//  console.log(previousValue.population+currentValue.population);
 
 
-
-
-
-                                            
-                                           //3. Write a “person” class to hold all the details.
-
- class person{
-    constructor(name,age,num){
-        this.name=name;
-        this.age=age;
-        this.num=num;
-
-    }
  }
 
- var details = new person("saveen","26","8220123122")
-//  console.log(details);
-                                             //4. write a class to calculate the uber price.
-
- class uber{
-    constructor(name,location,num,amount){
-        this.name=name;
-        this.location=location;
-        this.num=num;
-        this.amount=amount;
 
 
-    }
+
+// e Print the country which uses US Dollars as currency.
+
+function FindUSDollars(value,ind,arr) {
+
+let split_usd=Object.keys(value.currencies || {});
+  if (split_usd[0]=="USD") {
+    return true 
+  }
+
  }
+let country=data.filter(FindUSDollars)
+ console.log(country);
+}
 
- const perkm=15;
- let name= "saveen",street= "west street",number = "8220123122",count_person= 5,km= 5,amount=km*perkm*count_person;
- 
-// console.log(amount);
+const json=new XMLHttpRequest();
+json.addEventListener("load",myfunc)
 
- var uber_details = new uber(name,street,number,amount)
-//  console.log(uber_details);
+json.open("GET","https://restcountries.com/v3.1/all")
+json.send();
+
+</script>
 
 
 
-        </script>
-    
 </body>
 </html>
