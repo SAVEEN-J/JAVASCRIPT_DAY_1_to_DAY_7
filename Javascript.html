@@ -4,223 +4,108 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DAY-4</title>
+    <title>Iife</title>
 </head>
 <body>
-    <h1 style="text-align: center;border: 1px solid rebeccapurple; background-color: aquamarine;"> Day-4 /Activities</h1>
+  
+  <script>
+                                           //1. json iteratefor all loops
 
-
-    <h1>1 .Immediately Invoked Function Expressions</h1>
-    <h1>2 . Arrow functions</h1>
-
-    <script>
-///////////////////////////////////////////////a.Print odd numbers in an array 
-var addNumbers = [1,2,3,4,5,6,7,8,9,10,11,12,13];
-var oddNumber = [];
-
-(function(addNumbers) {
-
-
-for (let i in addNumbers) {
-      
-    if (addNumbers[i]%2 == 0) {
-        oddNumber.push(i)
+const json_array= new XMLHttpRequest();
+json_array.addEventListener("load",callfunction);
+json_array.open("GET","https://restcountries.com/v3.1/all")
+json_array.send()
     
-}        
-    }
-  
-
-return addNumbers;
-
-})(addNumbers);
-  // console.log("oddNumber",oddNumber);
-
-/////////////////////////////////////////////// b Convert all the strings to title caps in a string array
-var string_array = ["i like to play volley ball"];
-(function(string_array) {
-// console.log(string_array.map(str=>str.toUpperCase()));
-return string_array;
-
-})(string_array);
-
-///////////////////////////////////////////////c Sum of all numbers in an array
-
-(function(){
-    let add=0;
-    var sum=[100+200+450]
-    
-    for (let index = 0; index < sum.length; index++){
-       
-     add= add+sum[index];
- 
-    }
-   // console.log(add);
-
-return sum;
-})();
-
-/////////////////////////////////////////////// d -Return all the prime numbers in an array
-
-  let prime_num= [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17];
-
-
-  ((array) => {
- 
-    let find_pm =(array.filter(number=>{
-      if (number <=1) {
-        return false;
-        
-      }else{
-      for (let i = 2; i <= Math.sqrt(number); i++) {
-     
-     if (number % i === 0) {
-     
-       return false
-     }
-   }}return true
-
-    }));
-   
-   // console.log("prime numbers",find_pm);
-  
-})(prime_num);
-
-///////////////////////////////////////////////e Return all the palindromes in an array
-let palindromes_array=["ssdaa","asdfgfdsa","dsd","gsdsg","sgdgdsg","211","2113","323"];
-var newarray=[];
-((e)=>{  
-  
-
-for ( i=0; i<e.length;i++) {
-  
-    let par=e[i].split("").reverse().join("");
-    
-    if (e[i] == par) {
-        newarray.push(par)
-    }
-   
+function callfunction() {
+    let data=JSON.parse(this.responseText);
+//console.log(data);  
+    //for 
+for (let i = 0; i < data.length; i++) {
+  // console.log(data[i].name.common);    
 }
-})(palindromes_array);
-//console.log("palindromes",newarray);
-///////////////////////////////////////////////f Return  median of two array of the same
-
-let a = [0,2,3,5,9];
-let b = [1,4];
-var median = ((a1, a2) => {
-  let x = a1.concat(a2);
-  x.sort(function (a,b) {
-    return a - b;
-  });
-  let len = x.length;
-  
-  return len%2 === 0 ? (x[Math.floor(len/2)-1] + x[Math.ceil(len/2)])/2 : x[Math.floor(len/2)];
-
-})(a,b);
-//console.log("median",median);
-///////////////////////////////////////////////g Remove duplicates from an array
-
-
-let RemoveDuplicates = ["apple", "mango", "apple","orange", "mango", "mango"];
-          
- 
-((e)=> {
-  // console.log(e);
-  var RemoveValue =e.filter((val,ind)=>{
-
-  
-if (ind===e.indexOf(val)) {
- 
-  return true
-}  
-
-
-  })
- // console.log(RemoveValue);      
- 
-        
-})(RemoveDuplicates);
-///////////////////////////////h Rotate an array by k times
-function rotateArray(arr, k) {
-       k = k % arr.length;
-        return arr.slice(k).concat(arr.slice(0, k));
+    //for in
+for ( i in data){ 
+  //console.log(data[i].name.common,data[i].population);    
 }
-const array = [1, 2, 3, 4, 5];
-const rotations = 3;
-const rotatedArray = rotateArray(array, rotations);
-console.log(rotatedArray); // Output: [4, 5, 1, 2, 3]
- 
-////////////////////////////////////////////////////////////////////////////////2.ARROW FUNCTION////////////////////////////////////////////////////
-/////////////////////////////////////////////////// a.Print odd numbers in an array (ARROW)
+    //for of
+    for ( e of data){ 
+ //  console.log(e.name.common,e.population);    
 
-var ODDNumbers = [1,2,3,4,5,6,7,8,9,10,11,12,13];
-var oddnumber = [];
-let mapadd=ODDNumbers.map((v,i,a)=>{
- 
-if (v%2 ===0) {
- 
-  oddnumber.push(i)
 }
 
+    //foreach
 
-})
-
-// console.log(oddnumber);
-
-
-//////////////////////////////////////////// b Convert all the strings to title caps in a string array
-var string_array = ["i like to play volley ball"];
-
-   let string=string_array.map(str=>str.toUpperCase());
- //  console.log(string);
-///////////////////////////////////////////////c Sum of all numbers in an array
-var sum=[100,200,450]
-
-let ALLarray  =sum.reduce((p,c)=>{
-
- return p+c
-
-})
-// console.log("sum",ALLarray);
-
-/////////////////////////////////////////////// d -Return all the prime numbers in an array in arrow function
-
-let numArray = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,]
-numArray = numArray.filter((e) => {
-if (e <=1) {
-  return false
-} else {
-  for (var i = 2; i <= Math.sqrt(e); i++) {
-    if (e % i === 0 ) {
-      return false
-    }
-  }
-  
-}
-return true
- 
+Object.keys(data).forEach(function(k){
+    //console.log( data[k].name);
 });
 
-//  console.log(numArray);
-///////////////////////////////////////////////e Return all the palindromes in an array arrow function
+}
 
-let palindromes_Array=["ssdaa","asdfgfdsa","dsd","gsdsg","sgdgdsg","211","2113","323","savas"]
-let rev_Array=[];
 
-palindromes_Array.map((e)=>{
-  let reverse=e.split("").reverse().join("");
-  if (reverse == e ) {
-    rev_Array.push(reverse);
- }
+                                    // 2.OWN RESUME
+
+    var data={
+  "Resume_data": [
+    {
+      "name": "Saveen J",
+      "email": "saveenj1996@gmail.com",
+      "Phone": 8220123122,
+      "skills":{
+        "skills":"skills",
+        "skil1":"HTML-5",
+        "skil2":"CSS-3",
+        "skil3":"BootStrap",
+        "skil4":"JavaScript",
+        "skil5":"MySql",
+        "skil6":"MongoDB",
+        "skil7":"ReactJS",
+        "skil8":"NodeJS",
+        "skil9":"Data Structure & Algorithms",
+        "skil10":"AWS"
+
+                   },
+        "qualification":{
+            "clg_degree":"Mechanical Engineering",
+            "clg_name":"Muthyammal College of Engineering",
+            "clg_location":"Rasipuram",
+            "clg_degree_date":"May 2014 - April 2017"
+,
+                       },
+        "languages":{"lan1":"Tamli","lan2":"English"},
+
+    }, 
  
-})
-//console.log(rev_Array);
+  ]
+}    
 
-
-
-
-
-
-    </script>
+for (i in data) {
+     console.log(data[i]);
+    console.log(data[i][0].name);
+    console.log(data[i][0].email);
+    console.log(data[i][0].Phone);
+    console.log(data[i][0].skills.skil1);
+    console.log(data[i][0].skills.skil2);
+    console.log(data[i][0].skills.skil3);
+    console.log(data[i][0].skills.skil4);
+    console.log(data[i][0].skills.skil5);
+    console.log(data[i][0].skills.skil6);
+    console.log(data[i][0].skills.skil7);
+    console.log(data[i][0].skills.skil8);
+    console.log(data[i][0].skills.skil9);
+    console.log(data[i][0].skills.skil10);
+    console.log(data[i][0].qualification.clg_degree);
+    console.log(data[i][0].qualification.clg_name);
+    console.log(data[i][0].qualification.clg_location);
+    console.log(data[i][0].qualification.clg_degree_date);
+    console.log(data[i][0].languages.lan1);
+    console.log(data[i][0].languages.lan2);
     
+}
+
+
+
+
+// own resume
+</script>
 </body>
 </html>
