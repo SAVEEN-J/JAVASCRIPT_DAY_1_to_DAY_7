@@ -1,51 +1,46 @@
-
-function myfunc() {
-     var data=JSON.parse(this.responseText);
-    
- ///////////// a.Get all the countries from the Asia continent /region using the Filter function
-     function function_filter(e){
-
-   if (e.continents) {
-       return e.continents == "Asia" || e.region == "Asia"
+fetch('https://restcountries.com/v3.1/all')
+  .then(response => response.json())
+  .then(data => {
+    //a Get all the countries from the Asia continent/region using the Filter function
+    const asiaCountries = data.filter(country => country.region === 'Asia');
+    console.log('Countries in Asia:', asiaCountries);
    
-   } 
-     }
-     let region= data.filter(function_filter)
-   console.log(region);
+    //b Get all the countries with a population of less than 2 lakhs using Filter function
+    const populationLessThan2Lakhs = data.filter(country => country.population < 200000);
+    console.log('Countries with population less than 2 lakhs:', populationLessThan2Lakhs);
 
-    //////////////////b  Get all the countries with a population of less than 2 lakhs using Filter function
-    let population= data.filter(e=>e.population<200000);
-  console.log(population);
+    //c Print the following details name, capital, flag using forEach function
+    console.log('Details of countries:');
+    data.forEach(country => {
+      console.log('Name:', country.name.common);
+      console.log('Capital:', country.capital);
+      console.log('Flag:', country.flags.svg);
+    });
 
-///////////////////////////// c.Print the following details name, capital, flag using forEach function
+    //d Print the total population of countries using reduce function
+    const totalPopulation = data.reduce((acc, country) => acc + country.population, 0);
+    console.log('Total population of countries:', totalPopulation);
 
-data.forEach(element => {
- console.log(element.name,element.capital,element.flag);
-    
-});
+    //e Print the country which uses US Dollars as currency
+    const usDollarCountries=(value)=> {
+
+      let split_usd=Object.keys(value.currencies || {});
+        if (split_usd[0]=="USD") {
+          return true 
+        }
+      
+       }
+      let country=data.filter(usDollarCountries)
+    console.log('Countries which use US Dollars as currency:', country);
+
+  
+  })
+  .catch(error => console.error('Error fetching data:', error));
 
 
-    /////////// // d. Print the total population of countries using reduce function
-     let totalPopulation = data.reduce((accumulator, currentValue) => accumulator + currentValue.population, 0);
-     console.log("Total population of all countries:", totalPopulation);
 
-// e Print the country which uses US Dollars as currency.
 
-function FindUSDollars(value) {
 
-let split_usd=Object.keys(value.currencies || {});
-  if (split_usd[0]=="USD") {
-    return true 
-  }
 
- }
-let country=data.filter(FindUSDollars)
- console.log(country);
-}
 
-const json=new XMLHttpRequest();
-json.addEventListener("load",myfunc)
-
-json.open("GET","https://restcountries.com/v3.1/all")
-json.send();
 
